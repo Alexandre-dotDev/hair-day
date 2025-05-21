@@ -2,6 +2,7 @@
 const path = require("path");
 // Importação do plugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 /*
   Cria um modulo de exportação para expor os diretórios src e dist.
@@ -36,6 +37,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "index.html"),
       favicon: path.resolve("src", "assets", "scissors.svg"),
+    }),
+
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src", "assets"),
+          to: path.resolve(__dirname, "dist", "src", "assets"),
+        },
+      ],
     }),
   ],
 
