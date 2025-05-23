@@ -52,11 +52,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/, //Informa que todo .css deve ser utilizando style-loader e css-loader.
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.js$/,
+        test: /\.js$/, //Informa que todo .js deve ser compilado pelo babel-loader usando o preset-env.
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
