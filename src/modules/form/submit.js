@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 const form = document.querySelector("form");
 const selectedDate = document.querySelector("#date");
 
-// Data atual para formatar o input
+// Data atual para formatar  o input
 const inputToday = dayjs(new Date()).format("YYYY-MM-DD");
 
 // Carrega a data atual e define a data mínima com sendo a data atual.
