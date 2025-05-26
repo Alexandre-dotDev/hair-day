@@ -25,6 +25,26 @@ export function hoursLoad({ date }) {
 
     li.textContent = hour;
 
+    switch (hour) {
+      case "9:00":
+        hourHeaderAdd("Manhã");
+        break;
+      case "13:00":
+        hourHeaderAdd("Tarde");
+        break;
+      case "18:00":
+        hourHeaderAdd("Noite");
+        break;
+    }
+
     hours.append(li);
   });
+}
+
+function hourHeaderAdd(title) {
+  const header = document.createElement("li");
+  header.classList.add("hour-period");
+  header.textContent = title;
+
+  hours.append(header);
 }
