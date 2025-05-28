@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { openingHours } from "../../utils/opening-hours.js";
 import { hoursClick } from "./hours-click.js";
-import { scheduleFetchByDay } from "../../services/schedule-fetch-by-day.js";
 
 const hours = document.querySelector("#hours");
 
@@ -13,6 +12,7 @@ export function hoursLoad({ date, dailySchedules }) {
   const unavailableHours = dailySchedules.map((schedule) =>
     dayjs(schedule.when).format("HH:mm")
   );
+  // console.log(unavailableHours);
 
   const opening = openingHours.map((hour) => {
     //Recupera somente a hora.
@@ -20,9 +20,11 @@ export function hoursLoad({ date, dailySchedules }) {
 
     //Adiciona a hora na data e verifica se está no passado.
     const isHourPast = dayjs(date).add(scheduleHour, "hour").isBefore(dayjs());
-    console.log(isHourPast);
 
+    //Avalia se horário na agenda está no passado.
     const available = !unavailableHours.includes(hour) && !isHourPast;
+
+    // console.log({ hour, available });
 
     return {
       hour,
@@ -40,7 +42,7 @@ export function hoursLoad({ date, dailySchedules }) {
     li.textContent = hour;
 
     switch (hour) {
-      case "9:00":
+      case "09:00":
         hourHeaderAdd("Manhã");
         break;
       case "13:00":
